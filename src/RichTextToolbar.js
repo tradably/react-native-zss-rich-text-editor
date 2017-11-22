@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
-import {ListView, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {ListView, View, TouchableOpacity, Image, StyleSheet, ViewPropTypes} from 'react-native';
 import {actions} from './const';
 
 const defaultActions = [
@@ -31,10 +31,10 @@ export default class RichTextToolbar extends Component {
     actions: PropTypes.array,
     onPressAddLink: PropTypes.func,
     onPressAddImage: PropTypes.func,
-    selectedButtonStyle: PropTypes.object,
+    selectedButtonStyle: ViewPropTypes.style,
     iconTint: PropTypes.any,
     selectedIconTint: PropTypes.any,
-    unselectedButtonStyle: PropTypes.object,
+    unselectedButtonStyle: ViewPropTypes.style,
     renderAction: PropTypes.func,
     iconMap: PropTypes.object,
     onCustomButtonPress: PropTypes.func
