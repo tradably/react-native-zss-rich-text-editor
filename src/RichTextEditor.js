@@ -24,7 +24,9 @@ export default class RichTextEditor extends Component {
     hiddenTitle: PropTypes.bool,
     enableOnChange: PropTypes.bool,
     footerHeight: PropTypes.number,
-    contentInset: PropTypes.object
+    contentInset: PropTypes.object,
+    shouldShowLinkDialog: PropTypes.bool,
+    handleOnLinkSelection: PropTypes.func
   };
 
   static defaultProps = {
@@ -161,7 +163,9 @@ export default class RichTextEditor extends Component {
         case messages.LINK_TOUCHED:
           this.prepareInsert();
           const {title, url} = message.data;
-          this.showLinkDialog(title, url);
+          const { shouldShowLinkDialog, handleOnLinkSelection } = this.props
+          shouldShowLinkDialog && this.showLinkDialog(title, url);
+          handleOnLinkSelection && handleOnLinkSelection(title, url);
           break;
         case messages.LOG:
           console.log('FROM ZSS', message.data);
